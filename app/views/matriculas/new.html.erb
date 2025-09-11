@@ -1,0 +1,17 @@
+<h1>Nueva Matrícula</h1>
+
+<%= form_with model: @matricula, local: true do |f| %>
+  <p>
+    <%= f.label :estudiante_id, "Estudiante" %><br>
+    <%= f.collection_select :estudiante_id, @estudiantes, :id, :nombre %>
+  </p>
+
+  <p>
+    <%= f.label :curso_id, "Curso" %><br>
+    <%= f.collection_select :curso_id, @cursos, :id, :nombre %>
+  </p>
+
+  <p>
+    <%= f.submit "Guardar" %>
+  </p>
+<% end %>

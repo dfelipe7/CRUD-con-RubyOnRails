@@ -1,0 +1,22 @@
+<h1>Nuevo Curso</h1>
+
+<%= form_with model: @curso, local: true do |f| %>
+  <p>
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </p>
+
+  <p>
+    <%= f.label :codigo %><br>
+    <%= f.text_field :codigo %>
+  </p>
+
+  <p>
+    <%= f.label :creditos %><br>
+    <%= f.number_field :creditos %>
+  </p>
+
+  <p>
+    <%= f.submit "Guardar" %>
+  </p>
+<% end %>

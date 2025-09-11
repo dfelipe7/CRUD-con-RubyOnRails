@@ -1,0 +1,17 @@
+<h1>Editar Matrícula</h1>
+
+<%= form_with model: @matricula, local: true do |f| %>
+  <p>
+    <%= f.label :estudiante_id, "Estudiante" %><br>
+    <%= f.collection_select :estudiante_id, Estudiante.all, :id, :nombre %>
+  </p>
+
+  <p>
+    <%= f.label :curso_id, "Curso" %><br>
+    <%= f.collection_select :curso_id, Curso.all, :id, :nombre %>
+  </p>
+
+  <p>
+    <%= f.submit "Actualizar" %>
+  </p>
+<% end %>

@@ -1,0 +1,23 @@
+<h1>Listado de Matrículas</h1>
+<%= link_to "Nueva Matrícula", new_matricula_path, class: "btn btn-primary" %>
+
+<table>
+  <tr>
+    <th>Estudiante</th>
+    <th>Curso</th>
+    <th>Acciones</th>
+  </tr>
+
+  <% @matriculas.each do |matricula| %>
+    <tr>
+      <td><%= matricula.estudiante.nombre %></td>
+      <td><%= matricula.curso.nombre %></td>
+      <td>
+        <div class="acciones">
+        <%= link_to "Editar", edit_matricula_path(matricula), class: "btn btn-edit" %>
+        <%= button_to "Eliminar", matricula_path(matricula), method: :delete, data: { confirm: "¿Seguro que quieres eliminar esta matrícula?" }, class: "btn btn-danger" %>
+        </div>
+        </td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,22 @@
+<h1>Editar Estudiante</h1>
+
+<%= form_with model: @estudiante, local: true do |f| %>
+  <p>
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </p>
+
+  <p>
+    <%= f.label :edad %><br>
+    <%= f.number_field :edad %>
+  </p>
+
+  <p>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </p>
+
+  <p>
+    <%= f.submit "Actualizar" %>
+  </p>
+<% end %>

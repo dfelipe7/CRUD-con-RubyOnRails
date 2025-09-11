@@ -1,0 +1,26 @@
+<h1>Listado de Estudiantes</h1>
+<%= link_to "Nuevo Estudiante", new_estudiante_path, class: "btn btn-primary" %>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Edad</th>
+    <th>Email</th>
+    <th>Acciones</th>
+  </tr>
+
+  <% @estudiantes.each do |estudiante| %>
+    <tr>
+      <td><%= estudiante.nombre %></td>
+      <td><%= estudiante.edad %></td>
+      <td><%= estudiante.email %></td>
+    <td>
+    <div class="acciones">
+        <%= link_to "Editar", edit_estudiante_path(estudiante), class: "btn btn-edit" %>
+        <%= button_to "Eliminar", estudiante, method: :delete, data: { confirm: "¿Seguro?" }, class: "btn btn-danger" %>
+    </div>
+    </td>
+
+    </tr>
+  <% end %>
+</table>

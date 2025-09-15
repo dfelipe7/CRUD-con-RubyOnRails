@@ -8,7 +8,7 @@ gem "rails", "~> 7.1.3"
 gem "propshaft"
 
 # Base de datos SQLite3 (local, sencilla para desarrollo y pruebas)
-gem "sqlite3", "~> 1.6.9"
+gem "sqlite3", "~> 2.7.3"
 
 # Puma: el servidor web recomendado para producción en Rails
 gem "puma", ">= 5.0"

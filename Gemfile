@@ -1,66 +1,79 @@
+# Fuente oficial desde donde Bundler descarga las gemas
 source "https://rubygems.org"
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+# Rails es el framework principal del proyecto
 gem "rails", "~> 7.1.3"
-# The modern asset pipeline for Rails [https://github.com/rails/propshaft]
+
+# Propshaft: maneja los assets (CSS, JS, imágenes) en lugar del viejo sprockets
 gem "propshaft"
-# Use sqlite3 as the database for Active Record
+
+# Base de datos SQLite3 (local, sencilla para desarrollo y pruebas)
 gem "sqlite3", "~> 1.6.9"
-# Use the Puma web server [https://github.com/puma/puma]
+
+# Puma: el servidor web recomendado para producción en Rails
 gem "puma", ">= 5.0"
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+
+# Importmap: permite usar JS sin necesidad de Node o Webpack (más simple)
 gem "importmap-rails"
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+
+# Turbo: parte de Hotwire, hace que las páginas se actualicen sin recargar todo
 gem "turbo-rails"
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+
+# Stimulus: mini framework JS para manejar interactividad desde Rails
 gem "stimulus-rails"
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
+
+# Jbuilder: genera JSON fácilmente, útil para APIs
 gem "jbuilder"
 
+# rack-cors: habilita CORS para que otros clientes (ej. React, móvil) puedan consumir la API
 gem "rack-cors"
 
-
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
+# (comentada) se usa para encriptar contraseñas cuando implementas login con `has_secure_password`
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# tzinfo-data: necesario en Windows porque no incluye info de zonas horarias
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
-# Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
+# solid_cache, solid_queue, solid_cable → herramientas nuevas en Rails 7.1
+# - solid_cache: cache basado en base de datos
+# - solid_queue: cola de trabajos (background jobs)
+# - solid_cable: ActionCable simplificado para websockets
 gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
-# Reduces boot times through caching; required in config/boot.rb
+# bootsnap: acelera el arranque de Rails cachéando carga de gemas
 gem "bootsnap", require: false
 
-# Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
+# kamal: despliegue en contenedores Docker
 gem "kamal", require: false
 
-# Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
+# thruster: optimización de rendimiento para Puma (compresión, caching HTTP)
 gem "thruster", require: false
 
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+# (comentada) se usa para manipular imágenes en ActiveStorage (redimensionar, filtros, etc.)
 
+# Grupo de desarrollo y test → gemas que no van a producción
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  # debug: depuración paso a paso en Ruby
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
+  # brakeman: analiza el código en busca de vulnerabilidades de seguridad
   gem "brakeman", require: false
 
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  # rubocop-rails-omakase: estilo de código recomendado por Rails
   gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
+  # web-console: te abre una consola interactiva en el navegador cuando hay errores
   gem "web-console"
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  # capybara: framework para pruebas de integración (simula clicks, formularios, etc.)
   gem "capybara"
+  # selenium-webdriver: usado por Capybara para abrir navegadores reales en pruebas
   gem "selenium-webdriver"
 end

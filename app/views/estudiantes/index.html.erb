@@ -1,26 +1,43 @@
+<!-- Título principal de la página -->
 <h1>Listado de Estudiantes</h1>
+
+<!-- Enlace para crear un nuevo estudiante -->
+<!-- link_to genera un <a href="..."> -->
+<!-- new_estudiante_path apunta a la acción #new del controlador Estudiantes -->
 <%= link_to "Nuevo Estudiante", new_estudiante_path, class: "btn btn-primary" %>
 
+<!-- Inicio de la tabla donde listaremos todos los estudiantes -->
 <table>
   <tr>
+    <!-- Encabezados de las columnas -->
     <th>Nombre</th>
     <th>Edad</th>
     <th>Email</th>
     <th>Acciones</th>
   </tr>
 
+  <!-- Iteramos sobre la colección de estudiantes enviada por el controlador -->
   <% @estudiantes.each do |estudiante| %>
     <tr>
+      <!-- Imprimimos los atributos del objeto estudiante -->
+      <!-- estudiante.nombre / estudiante.edad / estudiante.email son columnas de la BD -->
       <td><%= estudiante.nombre %></td>
       <td><%= estudiante.edad %></td>
       <td><%= estudiante.email %></td>
-    <td>
-    <div class="acciones">
-        <%= link_to "Editar", edit_estudiante_path(estudiante), class: "btn btn-edit" %>
-        <%= button_to "Eliminar", estudiante, method: :delete, data: { confirm: "¿Seguro?" }, class: "btn btn-danger" %>
-    </div>
-    </td>
 
+      <!-- Columna de acciones (Editar y Eliminar) -->
+      <td>
+        <div class="acciones">
+          <!-- Botón Editar -->
+          <!-- edit_estudiante_path(estudiante) → va al formulario de edición (#edit) -->
+          <%= link_to "Editar", edit_estudiante_path(estudiante), class: "btn btn-edit" %>
+
+          <!-- Botón Eliminar -->
+          <!-- button_to genera un formulario con método DELETE hacia la acción #destroy -->
+          <!-- Se agrega confirmación con data: { confirm: "¿Seguro?" } -->
+          <%= button_to "Eliminar", estudiante, method: :delete, data: { confirm: "¿Seguro?" }, class: "btn btn-danger" %>
+        </div>
+      </td>
     </tr>
   <% end %>
 </table>

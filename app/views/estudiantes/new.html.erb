@@ -1,26 +1,37 @@
+<!-- Título de la página -->
 <h1>Nuevo Estudiante</h1>
 
-
+<!-- Formulario para crear un nuevo estudiante -->
+<!-- Como @estudiante es NUEVO (Estudiante.new), el form_with manda un POST -->
+<!-- POST /estudiantes → EstudiantesController#create -->
 <%= form_with(model: @estudiante, local: true) do |form| %>
+
+  <!-- Campo para el nombre -->
   <div>
     <%= form.label :nombre %>
     <%= form.text_field :nombre %>
   </div>
 
+  <!-- Campo para la edad -->
   <div>
     <%= form.label :edad %>
     <%= form.number_field :edad %>
   </div>
 
+  <!-- Campo para el email -->
   <div>
     <%= form.label :email %>
     <%= form.text_field :email %>
   </div>
 
+  <!-- Acciones -->
   <div class="acciones">
-  <%= form.submit "Crear Estudiante", class: "btn btn-primary" %>
-  <%= link_to "Volver al Listado", estudiantes_path, class: "btn btn-back" %>
-</div>
+    <!-- Botón de envío -->
+    <!-- Hace POST /estudiantes → EstudiantesController#create -->
+    <%= form.submit "Crear Estudiante", class: "btn btn-primary" %>
 
+    <!-- Enlace para volver al listado -->
+    <!-- estudiantes_path → GET /estudiantes → EstudiantesController#index -->
+    <%= link_to "Volver al Listado", estudiantes_path, class: "btn btn-back" %>
+  </div>
 <% end %>
-

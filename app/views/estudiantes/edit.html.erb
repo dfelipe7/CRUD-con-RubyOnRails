@@ -1,21 +1,32 @@
+<!-- Título de la página -->
 <h1>Editar Estudiante</h1>
 
+<!-- Formulario para editar un estudiante existente -->
+<!-- form_with detecta que @estudiante YA existe (porque viene de set_estudiante) -->
+<!-- Entonces el formulario se enviará por PATCH/PUT a /estudiantes/:id -->
+<!-- Eso llama a la acción #update en el EstudiantesController -->
 <%= form_with model: @estudiante, local: true do |f| %>
+
+  <!-- Campo para el nombre -->
   <p>
     <%= f.label :nombre %><br>
     <%= f.text_field :nombre %>
   </p>
 
+  <!-- Campo para la edad -->
   <p>
     <%= f.label :edad %><br>
     <%= f.number_field :edad %>
   </p>
 
+  <!-- Campo para el email -->
   <p>
     <%= f.label :email %><br>
     <%= f.email_field :email %>
   </p>
 
+  <!-- Botón para enviar el formulario -->
+  <!-- Al presionar, hace PATCH /estudiantes/:id → EstudiantesController#update -->
   <p>
     <%= f.submit "Actualizar" %>
   </p>

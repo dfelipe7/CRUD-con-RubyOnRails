@@ -2,7 +2,7 @@
 source "https://rubygems.org"
 
 # Rails es el framework principal del proyecto
-gem "rails", "~> 7.1.3"
+gem "rails", "~> 8.1.0"
 
 # Propshaft: maneja los assets (CSS, JS, imágenes) en lugar del viejo sprockets
 gem "propshaft"
